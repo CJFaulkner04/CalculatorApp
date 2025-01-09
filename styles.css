@@ -67,7 +67,7 @@ section{
     height: 55px;
 }
 .top h1{
-    margin-left: 5px;
+    margin-left: 6px;
     font-size: 30px;
     margin-bottom: 6px;
 }
@@ -84,7 +84,7 @@ section{
     margin-bottom: 0px;
 }
 
-.theme-selector h1{
+.theme-selector h2{
     font-size: 14px;
     font-weight: 550;
     margin-bottom: 10.5px;
