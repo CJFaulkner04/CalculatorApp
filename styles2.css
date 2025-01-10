@@ -134,6 +134,10 @@ section{
 .slide-button:hover{
     background-color: hsl(25, 100%, 61%);
 }
+#button-active {
+    margin-top: 4px;
+    box-shadow: none;
+  }
 
 
 
@@ -148,6 +152,7 @@ section{
     height: 130px;
     border-radius: 10px;
     padding: 0px;
+    overflow-x: hidden;
 }
 .display h1{
     text-align: end;
@@ -196,7 +201,7 @@ section{
     background-color: white;
 }
 
-#delete{
+.delete{
     background-color: hsl(185, 42%, 37%);
     display: flex;
     justify-content: center;
@@ -209,11 +214,11 @@ section{
     border-radius: 10px;
     box-shadow:0px 4px 0px 0px hsl(185, 58%, 25%);
 }
-#delete:hover{
+.delete:hover{
     background-color: 	hsl(185, 41%, 56%);
 }
 
-#reset{
+.reset{
     background-color: hsl(185, 42%, 37%);
     display: flex;
     justify-content: center;
@@ -227,11 +232,11 @@ section{
     border-radius: 10px;
     box-shadow:0px 4px 0px 0px hsl(185, 58%, 25%);
 }
-#reset:hover{
+.reset:hover{
     background-color: 	hsl(185, 41%, 56%);
 }
 
-#equal{
+.equal{
     background-color: hsl(25, 98%, 40%);
     display: flex;
     justify-content: center;
@@ -246,6 +251,45 @@ section{
     box-shadow:0px 4px 0px 0px hsl(25, 99%, 27%);
 }
 
-#equal:hover{
+.equal:hover{
     background-color: 	hsl(25, 100%, 61%);
+}
+
+/* SCREEN SIZE */
+@media screen and (max-width: 500px){
+    section{
+        width: 90%;
+    }
+}
+
+@media screen and (max-height: 700px) {
+    section{
+        height: 95vh;
+    }
+
+    .display{
+        height: 15%;
+    }
+    .grid-container{
+        height: 60%;
+    }
+    .grid{
+        gap: 1%;
+    }
+}
+
+@media screen and (max-height: 1000px){
+    section{
+        height: 80vh;
+    }
+
+    .display{
+        height: 15%;
+    }
+    .grid-container{
+        height: 60%;
+    }
+    .grid{
+        gap: 2%;
+    }
 }

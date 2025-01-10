@@ -2,9 +2,9 @@ let text = document.getElementById("text");
 
 let buttons = document.querySelectorAll("a");
 
-let equal = document.getElementById("equal");
-let reset = document.getElementById("reset");
-let del = document.getElementById("delete");
+let equal = document.querySelector(".equal");
+let reset = document.querySelector(".reset");
+let del = document.querySelector(".delete");
 
 let styles = document.querySelector('head > link')
 let safe = false;
@@ -38,18 +38,22 @@ buttons.forEach(b => {
 
 
 equal.addEventListener('click', () => {
+    if(safe){
+        text.innerText = eval(text.innerText.valueOf())
+    }
     
-    text.innerText = eval(text.innerText.valueOf())
 })
 
 
 del.addEventListener('click', () => {
     let textLength = text.innerText.length;
     text.innerText = text.innerText.valueOf().slice(0, textLength-1);
+    checkLast()
 })
 
 reset.addEventListener('click', () => {
     text.innerText = '';
+    safe = false;
 })
 
 let checkLast = () => {
@@ -66,96 +70,15 @@ let checkLast = () => {
 // Click Animation
 
 buttons.forEach(b => {
-    if(theme == 1){
-        if(b.innerText == 'DEL' || b.innerText == 'RESET'){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(224, 28%, 35%)";
-            })
-        } else if(b.innerText == '='){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(6, 70%, 34%)";
-            }) 
-        } else {
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(28, 16%, 65%)";
-            }) 
-        }
-    } else if (theme == 2){
-        if(b.innerText == 'DEL' || b.innerText == 'RESET'){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(185, 58%, 25%)";
-            })
-        } else if(b.innerText == '='){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(185, 58%, 25%)";
-            }) 
-        } else {
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(35, 11%, 61%)";
-            }) 
-        }
-    } else if(theme == 3) {
-        if(b.innerText == 'DEL' || b.innerText == 'RESET'){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(285, 91%, 52%)";
-            })
-        } else if(b.innerText == '='){
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(177, 92%, 70%)";
-            }) 
-        } else {
-            b.addEventListener('mousedown', () => {
-                b.style.marginTop = "4px";
-                b.style.boxShadow = "none";
-            })
-            b.addEventListener('mouseup', () => {
-                b.style.marginTop = "0px";
-                b.style.boxShadow = "0px 4px 0px 0px hsl(290, 70%, 36%)";
-            }) 
-        }
-    }
+    b.addEventListener('mousedown', () => {
+        b.setAttribute('id', 'button-active');
+      });
     
-    
+      b.addEventListener('mouseup', () => {
+        if (b.getAttribute('id') === 'button-active') {
+          b.removeAttribute('id');
+        }
+      });
 })
 
 // Themes
@@ -176,5 +99,6 @@ sliderButton.addEventListener('click', () => {
         styles.href = "styles.css"
         theme = 1;
     }
+    console.log(theme);
 })
 
