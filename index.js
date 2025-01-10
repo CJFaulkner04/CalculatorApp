@@ -8,6 +8,7 @@ let del = document.querySelector(".delete");
 
 let styles = document.querySelector('head > link')
 let safe = false;
+let dotSafe = true;
 let theme = 1;
 
 buttons.forEach(b => {
@@ -20,15 +21,28 @@ buttons.forEach(b => {
         } else if( (!safe && bText == '+') || (!safe && bText == '-') ||(!safe && bText == 'x') || (!safe && bText == '/') || (!safe && bText == '.')){
 
         } else {
-            if(bText == "x"){
+            if(safe && bText == "x"){
                 text.innerText += "*";
             } else{
-                text.innerText += b.innerText.valueOf();
+                if(dotSafe && bText == '.'){
+                    text.innerText += b.innerText.valueOf();
+                    dotSafe = false;
+                    
+                } else if(!dotSafe && bText == '.'){
+
+                }else if( bText == '+' || bText == '-' || bText == '*' || bText == '/'){
+                    text.innerText += b.innerText.valueOf();
+                    dotSafe = true;
+                } else {
+                    text.innerText += b.innerText.valueOf();
+                }
+                
             }
             
             
         }
         checkLast();
+        
         
     })
 })
@@ -39,7 +53,10 @@ buttons.forEach(b => {
 
 equal.addEventListener('click', () => {
     if(safe){
-        text.innerText = eval(text.innerText.valueOf())
+        let input = text.innerText;
+        let newInput = input.replace("," , "");
+        const output = eval(newInput.valueOf()).toLocaleString();
+        text.innerText = output;
     }
     
 })
@@ -59,7 +76,7 @@ reset.addEventListener('click', () => {
 let checkLast = () => {
     let length = text.innerText.valueOf().length;
     let texts = text.innerText.valueOf();
-    if(texts == '' || texts.charAt(length-1) == '+' || texts.charAt(length-1) == '-' || texts.charAt(length-1) == 'x' || texts.charAt(length-1) == '/' || texts.charAt(length-1) == '.'){
+    if(texts == '' || texts.charAt(length-1) == '+' || texts.charAt(length-1) == '-' || texts.charAt(length-1) == '*' || texts.charAt(length-1) == '/' || texts.charAt(length-1) == '.'){
         safe = false;
     } else {
         safe = true;
