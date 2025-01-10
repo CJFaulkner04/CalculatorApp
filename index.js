@@ -86,19 +86,31 @@ let sliderButton = document.querySelector(".slide-button");
 let slider = document.querySelector(".slider");
 
 sliderButton.addEventListener('click', () => {
-    if(getComputedStyle(slider).justifyContent == "start"){
-        slider.style.justifyContent = "center";
+    sliderButton.style.animation = "none";
+    sliderButton.offsetHeight; 
+
+    if (theme == 1) {
         styles.href = "styles2.css";
         theme = 2;
-    } else if(getComputedStyle(slider).justifyContent == "center"){
-        slider.style.justifyContent = "end"
+        sliderButton.style.transition = "transform .3s ease";
+        sliderButton.style.transform = "translateX(21px)";
+    } else if (theme == 2) {
         styles.href = "styles3.css";
         theme = 3;
+        sliderButton.style.transition = "transform .3s ease";
+        sliderButton.style.transform = "translateX(42px)"; 
     } else {
-        slider.style.justifyContent = "start"
-        styles.href = "styles.css"
+        styles.href = "styles.css";
         theme = 1;
+        sliderButton.style.transition = "transform .3s ease";
+        sliderButton.style.transform = "translateX(0)"; 
     }
+
+    setTimeout(() => {
+        sliderButton.style.animation = "slideAnimation .3s forwards";
+    }, 0);
+
     console.log(theme);
-})
+});
+
 

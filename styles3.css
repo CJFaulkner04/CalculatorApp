@@ -116,7 +116,6 @@ section{
 .slider{
     display: flex;
     align-items: center;
-    justify-content: start;
     background-color: hsl(268, 71%, 12%);
     height: 25px;
     width: 100%;
@@ -137,6 +136,18 @@ section{
     margin-top: 4px;
     box-shadow: none;
   }
+
+  /* lazy animation solution */
+  @keyframes slideAnimation {
+    0% {
+        transform: translateX(22px);
+    }
+    100% {
+        transform: translateX(42px); 
+    }
+}
+
+
 
 
 /* DISPLAY */

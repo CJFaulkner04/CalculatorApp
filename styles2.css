@@ -117,19 +117,20 @@ section{
 .slider{
     display: flex;
     align-items: center;
-    justify-content: start;
-    background-color: hsl(0, 5%, 81%);
+    background-color:hsl(0, 5%, 81%);
     height: 25px;
     width: 100%;
     border-radius: 25px;
 }
 .slide-button{
-    background-color: hsl(25, 98%, 40%);
+    
+    background-color:hsl(25, 98%, 40%);
     height: 10px;
     width: 10px;
     padding: 3px;
     margin: 6px;
     border-radius: 50%;
+    
 }
 .slide-button:hover{
     background-color: hsl(25, 100%, 61%);
@@ -137,7 +138,18 @@ section{
 #button-active {
     margin-top: 4px;
     box-shadow: none;
-  }
+}
+
+/* lazy animation solution */
+@keyframes slideAnimation {
+    0%{
+        transform: translateX(0);
+
+    }
+    100%{
+        transform: translateX(21px);
+    }
+}
 
 
 
